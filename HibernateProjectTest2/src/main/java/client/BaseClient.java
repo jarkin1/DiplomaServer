@@ -5,6 +5,8 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
+
 import server.Server;
 
 public class BaseClient {
@@ -17,6 +19,7 @@ public class BaseClient {
 			e.printStackTrace();
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error, Server not found, please launch server!");
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}		

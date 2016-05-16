@@ -1,34 +1,35 @@
 package dm.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
-public class OrderLine {
+public class OrderLine implements Serializable{
+	private static final long serialVersionUID = -2928528834656517658L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int amount;
 	private int discount;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "goods_id")
 	private Goods goods;
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order2 order;
 	
 	//Constructor
-	public OrderLine(int amount, int discount, Goods goods, Order2 order) {
+	public OrderLine(int amount, int discount, Goods goods) {
 		this.amount = amount;
 		this.discount = discount;
 		this.goods = goods;
-		this.order = order;
 	}
 	public OrderLine() {
 	}

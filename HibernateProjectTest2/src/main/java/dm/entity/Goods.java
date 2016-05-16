@@ -2,12 +2,15 @@ package dm.entity;
 
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Goods implements Serializable{
@@ -22,8 +25,8 @@ public class Goods implements Serializable{
 	private int price;
 	private double weight;
 	private int amount;
-	
-	
+	@OneToMany(mappedBy="goods", cascade=CascadeType.ALL)
+	List<OrderLine> orderLines;
 	//Constructor
 	public Goods(String code, String name, int price, double weight, int amount){
 		this.code = code;
@@ -81,6 +84,13 @@ public class Goods implements Serializable{
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
+	}
+	public void setOrderLines(List<OrderLine> orderLines) {
+		this.orderLines = orderLines;
 	}
 	@Override
 	public String toString() {

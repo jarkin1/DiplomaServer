@@ -31,10 +31,9 @@ public class GoodsClient {
 		}
 		return null;
 	}
-	public static void removeGoods(Goods goods){
+	public static void removeGoods(int id){
 		try {
-			Goods good = (Goods)goods;
-			BaseClient.getServer().removeGoods(good);
+			BaseClient.getServer().removeGoods(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

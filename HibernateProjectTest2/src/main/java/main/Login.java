@@ -5,17 +5,24 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import client.LoginClient;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
 
 public class Login {
 
 	private JFrame frmSignIn;
 	private JTextField textFUsername;
 	private JTextField textFPassword;
+	final Toolkit toolkit = Toolkit.getDefaultToolkit();
+	final Dimension screenSize = toolkit.getScreenSize();
+	final int x = (screenSize.width-383) / 2;
+	final int y = (screenSize.height-230) / 2;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,7 +44,9 @@ public class Login {
 	private void initialize(){
 		frmSignIn = new JFrame();
 		frmSignIn.setTitle("Sign in");
+		frmSignIn.setResizable(false);
 		frmSignIn.setBounds(100, 100, 383, 230);
+		frmSignIn.setLocation(x, y);
 		frmSignIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSignIn.getContentPane().setLayout(null);
 		

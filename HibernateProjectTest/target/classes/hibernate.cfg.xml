@@ -9,12 +9,13 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">123456</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
-		<mapping class="dm.entity.Goods" />
-		<mapping class="dm.entity.Order2" />
-		<mapping class="dm.entity.OrderLine" />
 		<mapping class="dm.entity.Login" />
+		<mapping class="dm.entity.Goods" />
+		<mapping class="dm.entity.OrderLine" />
+		<mapping class="dm.entity.Order2" />
+		<mapping class="dm.entity.Customer"/>
 
 	</session-factory>
 </hibernate-configuration>

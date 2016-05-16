@@ -8,8 +8,10 @@ import java.util.List;
 
 import dm.daoimpl.GoodsDAOImpl;
 import dm.daoimpl.LoginDAOImpl;
+import dm.daoimpl.OrderLineDAOImpl;
 import dm.entity.Goods;
 import dm.entity.Login;
+import dm.entity.OrderLine;
 
 
 
@@ -21,6 +23,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server{
 	}
 	private GoodsDAOImpl goodsDAOImpl = new GoodsDAOImpl();
 	private LoginDAOImpl loginDAOImpl = new LoginDAOImpl();
+	private OrderLineDAOImpl orderLineDAOImpl = new OrderLineDAOImpl();
 	
 	@Override
 	public boolean checkLogin(String userName, String password) throws RemoteException {
@@ -54,14 +57,18 @@ public class ServerImpl extends UnicastRemoteObject implements Server{
 	}
 
 	@Override
-	public void removeGoods(Goods goods) throws RemoteException {
-		Goods good = (Goods)goods;
-		goodsDAOImpl.remove(good);
+	public void removeGoods(int id) throws RemoteException {
+		goodsDAOImpl.remove(id);
 	}
 
 	@Override
 	public Goods findById(int id) throws RemoteException {
 		return goodsDAOImpl.findById(id);
+	}
+
+	@Override
+	public void saveOrderLine(OrderLine orderLine) throws RemoteException {
+		orderLineDAOImpl.save(orderLine);
 	}
 
 	

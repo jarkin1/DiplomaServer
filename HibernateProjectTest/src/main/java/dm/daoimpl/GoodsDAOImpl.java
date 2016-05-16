@@ -23,8 +23,9 @@ public class GoodsDAOImpl implements GoodsDAO{
 		session.getTransaction().commit();		
 	}
 
-	public void remove(Goods goods) {
+	public void remove(int id) {
 		session.beginTransaction();
+		Goods goods = (Goods)session.load(Goods.class, id);
 		session.delete(goods);
 		session.getTransaction().commit();		
 	}

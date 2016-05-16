@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.Type;
 public class Order2 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
 	private int id;
 	@Type(type="timestamp")
 	private Date createDate;
@@ -30,6 +32,8 @@ public class Order2 {
 	private OrderStatus orderStatus;
 	@OneToMany(mappedBy = "order")
 	private List<OrderLine> orderLine;
+	@ManyToOne
+	private Customer customer;
 	
 	
 	//Constructor
